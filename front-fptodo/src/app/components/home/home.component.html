@@ -1,0 +1,24 @@
+<div class="searchbar">
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" [(ngModel)]="name" />
+  </mat-form-field>
+
+  <mat-form-field [style.width.px]=400>
+    <mat-label>Description</mat-label>
+    <input matInput  placeholder="Description" [(ngModel)]="description" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="filterBoards()">Filter</button>
+  <button mat-raised-button (click)="clearFilters()">Clear Filters</button>
+</div>
+<mat-nav-list>
+  <div container *ngFor="let board of boards">
+    <app-board [board]="board" (updatedBoard)="updateBoards()"></app-board>
+  </div>
+  <button mat-fab extended color="primary" (click)="onAddBoard()">
+    <mat-icon>add</mat-icon>
+    Dodaj tablicę
+  </button>
+</mat-nav-list>

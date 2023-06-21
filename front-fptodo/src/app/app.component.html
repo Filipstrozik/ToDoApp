@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav closed mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="sidenav.toggle()">
+        <button mat-raised-button color="primary">
+          <mat-icon class="mat-icon-large">home</mat-icon>
+          <span class="nav-item-text">Boards</span>
+        </button>
+      </a>
+    <a mat-list-item routerLink="/users" (click)="sidenav.toggle()">
+      <button mat-raised-button color="primary">
+        <mat-icon class="mat-icon-large">account_circle</mat-icon>
+        <span class="nav-item-text">Users</span>
+      </button>
+    </a>
+      <a mat-list-item routerLink="/todos" (click)="sidenav.toggle()">
+        <button mat-raised-button color="primary">
+          <mat-icon class="mat-icon-large">assignment_turned_in</mat-icon>
+          <span class="nav-item-text">ToDos</span>
+        </button>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>ToDo App</span>
+      <div style="position: absolute; right: 10px; display: flex; gap: 10px; z-index: -1;">
+        <span *ngFor="let author of authors">
+          {{author}}
+        </span> 
+      </div>
+    </mat-toolbar>
+    
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
