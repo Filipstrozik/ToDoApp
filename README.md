@@ -25,17 +25,17 @@ Also it is uses Anglar Material components and EF for ORM.
 # Screenshots
 
 Main boards view
-![Image Alt Text](images\1.png)
+![Image Alt Text](./images/1.png)
 Users view
-![Image Alt Text](images\2.png)
+![Image Alt Text](./images/2.png)
 To do items view
-![Image Alt Text](images\3.png)
+![Image Alt Text](./images/3.png)
 Adding new board
-![Image Alt Text](images\4.png)
+![Image Alt Text](./images/4.png)
 Adding new task
-![Image Alt Text](images\5.png)
+![Image Alt Text](./images/5.png)
 UI desscirption
-![Image Alt Text](images\6.png)
+![Image Alt Text](./images/6.png)
 
 # Instalation
 
