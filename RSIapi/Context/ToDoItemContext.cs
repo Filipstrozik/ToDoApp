@@ -8,6 +8,7 @@ namespace RSIapi.Context
         public ToDoItemContext(DbContextOptions<ToDoItemContext> options)
             : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
         public DbSet<ToDoItem> ToDoItems { get; set; }
 

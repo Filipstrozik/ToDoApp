@@ -10,8 +10,8 @@ import ToDoItemDTO from '../models/todoItemDTO';
   providedIn: 'root',
 })
 export class TodoapiService {
-  private apiUrl = 'https://fptodo.azurewebsites.net/api/';
-  // private apiUrl = 'https://localhost:7192/api/';
+  // private apiUrl = 'https://fptodo.azurewebsites.net/api/';
+  private apiUrl = 'https://localhost:7192/api/';
 
   private toDoItemsUrl = 'todoitems';
   private boardsUrl = 'boards';
@@ -147,6 +147,12 @@ export class TodoapiService {
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}${this.userUrl}`, user);
+  }
+
+  login(email: string, password: string): Observable<string> {
+    const credentials = { email: email, password: password };
+    const url = `${this.apiUrl}${this.userUrl}/login`;
+    return this.http.post(url, credentials, { responseType: 'text' });
   }
 
   updateUser(user: User): Observable<User> {

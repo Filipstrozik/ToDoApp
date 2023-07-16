@@ -30,13 +30,19 @@ import { HomeComponent } from './components/home/home.component';
 import { ToDoItemComponent } from './components/to-do-item/to-do-item.component';
 import { BoardComponent } from './components/board/board.component';
 import { UserComponent } from './components/users-management/user/user.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { ToDoItemEditDialogComponent } from './components/to-do-item/to-do-item-edit-dialog/to-do-item-edit-dialog.component';
 import { ToDoItemAddComponent } from './components/to-do-item/to-do-item-add/to-do-item-add.component';
 import { BoardAddComponent } from './components/board/board-add/board-add.component';
 import { UsersManagementComponent } from './components/users-management/users-management.component';
 import { AddUserDialogComponent } from './components/users-management/add-user-dialog/add-user-dialog.component';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,7 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
     UsersManagementComponent,
     AddUserDialogComponent,
     ToDoListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,13 @@ import { ToDoListComponent } from './components/to-do-list/to-do-list.component'
     NgxMatTimepickerModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

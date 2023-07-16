@@ -43,7 +43,7 @@ namespace RSIapi.Controllers
               return NotFound();
           }
 
-            var boards = await _context.Boards.Include(b => b.ToDoItems).ThenInclude(item => item.User).ToListAsync();
+            var boards = await _context.Boards.Include(b => b.ToDoItems).ThenInclude(item => item.User).Where(board => board.CreatedById == userContextService.GetUserId).ToListAsync();
 
             return boards;
         }

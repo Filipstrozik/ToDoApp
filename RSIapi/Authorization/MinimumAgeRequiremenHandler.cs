@@ -8,6 +8,12 @@ namespace RSIapi.Authorization
         {
 
             // we can use logger to log the request try, use context .User to get the user info
+            // user can be null if the request is not authenticated
+            if(context.User == null)
+            {
+                return Task.CompletedTask;
+            }
+
             var age = context.User.FindFirst(c => c.Type == "Age").Value;
             if (age == null)
             {

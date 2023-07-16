@@ -45,8 +45,11 @@ else
 
 //connection = "Server=tcp:fptodo-server.database.windows.net,1433;Initial Catalog=fptodo-database;Persist Security Info=False;User ID=fptodo-server-admin;Password=D00SKF01GC7I3I24$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+//builder.Services.AddDbContext<ToDoItemContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
+
 builder.Services.AddDbContext<ToDoItemContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLDb")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 
@@ -88,8 +91,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AtLeast20", builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
 });
 
-builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeRequiremenHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeRequiremenHandler>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<ContextSeeder>();
 builder.Services.AddScoped<IUserContextService, UserContextService>();
