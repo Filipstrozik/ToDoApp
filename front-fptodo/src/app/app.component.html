@@ -21,7 +21,7 @@
       </a>
       <a mat-list-item routerLink="/login" (click)="sidenav.toggle()">
         <button mat-raised-button color="primary">
-          <mat-icon class="mat-icon-large">account</mat-icon>
+          <mat-icon class="mat-icon-large">account_box</mat-icon>
           <span class="nav-item-text">login</span>
         </button>
       </a>
@@ -36,10 +36,10 @@
       <div style="position: absolute; right: 10px; display: flex; gap: 10px; z-index: -1;">
         <span *ngFor="let author of authors">
           {{author}}
-        </span> 
+        </span>
       </div>
     </mat-toolbar>
-    
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

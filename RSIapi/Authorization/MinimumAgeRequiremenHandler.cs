@@ -14,20 +14,29 @@ namespace RSIapi.Authorization
                 return Task.CompletedTask;
             }
 
-            var age = context.User.FindFirst(c => c.Type == "Age").Value;
-            if (age == null)
-            {
-                return Task.CompletedTask;
-            }
 
-            if (int.Parse(age) >= requirement.MinimumAge)
+            try
             {
-                context.Succeed(requirement);
+                var age = context.User.FindFirst(c => c.Type == "Age").Value;
+                if (age == null)
+                {
+                    return Task.CompletedTask;
+                }
+
+                if (int.Parse(age) >= requirement.MinimumAge)
+                {
+                    context.Succeed(requirement);
+                }
+                else
+                {
+                    context.Fail();
+                }
             }
-            else
+            catch (Exception e)
             {
                 context.Fail();
             }
+
             return Task.CompletedTask;
         }
     }
