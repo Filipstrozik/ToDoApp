@@ -37,6 +37,12 @@
         <span *ngFor="let author of authors">
           {{author}}
         </span>
+        <a *ngIf="isLoggedIn" (click)="logout">
+          <button mat-raised-button color="primary">
+            <mat-icon class="mat-icon-large">account_box</mat-icon>
+            <span class="nav-item-text">logout</span>
+          </button>
+        </a>
       </div>
     </mat-toolbar>
 

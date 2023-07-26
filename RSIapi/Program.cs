@@ -85,14 +85,14 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("HasAge", builder => builder.RequireClaim("Age","33")); // ok ale jak mieć liczby? tablica wszyskich wieków xd
-    options.AddPolicy("AtLeast20", builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("HasAge", builder => builder.RequireClaim("Age","33")); // ok ale jak mieć liczby? tablica wszyskich wieków xd
+//    options.AddPolicy("AtLeast20", builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
+//});
 
 builder.Services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
-builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeRequiremenHandler>();
+//builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeRequiremenHandler>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<ContextSeeder>();
 builder.Services.AddScoped<IUserContextService, UserContextService>();
