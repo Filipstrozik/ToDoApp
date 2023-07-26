@@ -34,8 +34,6 @@ namespace RSIapi.Controllers
 
         // GET: api/Boards
         [HttpGet]
-        //[Authorize(Policy = "HasAge")] // This is the policy name from Startup.cs used for authorization by claim.
-        [Authorize(Policy = "AtLeast20")] // This is the policy name from Startup.cs used for authorization by requirement.
         public async Task<ActionResult<IEnumerable<Board>>> GetBoards()
         {
           if (_context.Boards == null)

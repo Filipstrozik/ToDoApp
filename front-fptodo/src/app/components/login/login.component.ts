@@ -13,8 +13,6 @@ export class LoginComponent {
   constructor(private todoApiService: TodoapiService) {}
 
   onSubmit() {
-    // Here, you can implement the login functionality using the provided username and password.
-    // For this example, we'll just print the entered values to the console.
     console.log('Username:', this.username);
     console.log('Password:', this.password);
     // login using login method in service and store the result as a Bearer JWT token
